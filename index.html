@@ -1,15 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Home" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://planetayenergia.com/" />
     <title>Planeta y Energia</title>
+    <link rel="stylesheet" href="./css/bootstrap-5.0.2.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
 </head>
 
-<body>
-    <h1>Planeta y Energia!</h1>
+<body class="h-100">
+    <div class="pre-header">
+        <div class="container">
+            <div class="row p-1">
+                <div class="col-12 col-md-3 text-light">
+                    <strong class="text-light" id="temp">-</strong><sup class="text-light">F</sup> Indianapolis
+                </div>
+                <div class="col-12 col-md-3 text-light">
+                    Tuesday, March 29, 2022
+                </div>
+                <div class="col-0 col-md-4 text-light">
+
+                </div>
+                <div class="col-2 text-light">
+                    <!-- Let's just skip this part for now and focus on the main nav -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="brand-ad-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <a href="/"><img alt="planet-energy-logo" title="planet-energy-logo" id="brand__logo" width="272"
+                            height="90"
+                            src="https://images.marketpath.com/49a8453e-67cb-48fd-a268-1789963f8444/image/0719607a-83f8-4597-bd52-c7641d48976a/planet-energy-logo.png" /></a>
+                </div>
+                <div class="col-12 col-md-8 text-center py-2">
+
+                    <a href="https://avanti.systems" target="_blank"><img
+                            src="https://images.marketpath.com/49a8453e-67cb-48fd-a268-1789963f8444/image/1cd56c99-37fc-48ef-848a-0c386415a3e5/ad-01.jpeg"
+                            alt="ad-01" id="site-logo" class="img-fluid" /></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar navbar-expand-md bg-transparent navbar-transparent topbar">
+            <div class="container">
+                <!-- Hamburger Menu -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="" class="nav-link px-3 text-dark text-uppercase fw-bold">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link px-3 text-dark text-uppercase fw-bold">Science</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link px-3 text-dark text-uppercase fw-bold">Environment</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-masonry">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6 p-3 hero-masonry__tile thick-border__right" style="height:450px;"
+                    id="featured-main-wrapper">
+                    <div class="zi-2">
+                        <h6><span class="badge bg-dark" id="featured-main-topic"></span></h6>
+                        <h4 class="text-wrap" id="featured-main"></h4>
+                        <div><small id="featured-main-clean-url" class="text-white fw-bold me-3"></small> <small
+                                class="text-white" id="featured-main-date"></small></div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="row">
+                        <div class="col-12 p-3 hero-masonry__tile thick-border__bottom" style="height:258px;"
+                            id="featured-main-small-wrapper">
+                            <div class="zi-2">
+                                <h6><span class="badge bg-dark" id="featured-main-small-topic"></span></h6>
+                                <h4 class="text-wrap" id="featured-main-small"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row featured-small">
+                        <div class="col-6 p-3 hero-masonry__tile thick-border__right"
+                            style="background: url() no-repeat; height:192px;" id="featured-small-left-wrapper">
+                            <div class="zi-2">
+                                <h6><span class="badge bg-dark" id="featured-small-left-topic"></span></h6>
+                                <h4 class="text-wrap" id="featured-small-left"></h4>
+                            </div>
+                        </div>
+                        <div class="col-6 p-3 hero-masonry__tile" style="background: url() no-repeat; height:192px;"
+                            id="featured-small-right-wrapper">
+                            <div class="zi-2">
+                                <h6><span class="badge bg-dark" id="featured-small-right-topic"></span></h6>
+                                <h4 class="text-wrap" id="featured-small-right"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var newsData = "";
+        var url = new URL('https://free-news.p.rapidapi.com/v1/search');
+        var params = { q: 'energy, solar, world, electricity, wind', lang: 'en' };
+        url.search = new URLSearchParams(params).toString();
+
+        fetch(url, {
+            "method": "GET",
+            "headers": {
+                'x-rapidapi-host': 'free-news.p.rapidapi.com',
+                'x-rapidapi-key': '29b165ef87msh7c35f1e9599cea9p1efc23jsne9fe624941c6'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                debugger;
+                newsData = data.articles;
+                const featured_main_published_date = new Date(newsData[0].published_date).toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+
+                setBackground('#featured-main-wrapper', newsData[0].media);
+                setElement('#featured-main-topic', newsData[0].topic);
+
+                setElement('#featured-main-topic', newsData[0].topic);
+                setElement('#featured-main', newsData[0].title);
+                setElement('#featured-main-date', featured_main_published_date);
+                setElement('#featured-main-clean-url', newsData[0].clean_url);
+
+                setBackground('#featured-main-small-wrapper', newsData[1].media);
+                setElement('#featured-main-small-topic', newsData[1].topic);
+                setElement('#featured-main-small', newsData[1].title);
+
+                setBackground('#featured-small-left-wrapper', newsData[2].media);
+                setElement('#featured-small-left-topic', newsData[2].topic);
+                setElement('#featured-small-left', newsData[2].title);
+
+                setBackground('#featured-small-right-wrapper', newsData[3].media);
+                setElement('#featured-small-right-topic', newsData[3].topic);
+                setElement('#featured-small-right', newsData[3].title);
+
+                loadLatestArticles();
+                let html = "";
+                console.log('First Article', newsData[0]);
+                /*data.articles.map( el => {
+                    html += `<div class="card" style="display:flex;">
+                                <div style="width: 100px; height:100px;">
+                                    <img src="${el.media}" alt="" style="with:100%; height:100%;" >
+                                </div>
+                                <div>
+                                    <h3>${el.title}</h3>
+                                    <div>${el.author}</div>
+                                    <div>${el.summary}</div>
+                                </div>
+                             </div>`;
+                    //console.log('data', el);
+                });*/
+                //document.querySelector("#featured-main").innerHTML = html;
+            });
+        function setElement(element, value) {
+            document.querySelector(element).innerHTML = value;
+        }
+
+        function setBackground(element, value) {
+            document.querySelector(element).style.background = `url(${value}) no-repeat`;
+        }
+
+        function setImgSrc(element, value) {
+            document.querySelector(element).src = value;
+        }
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-8 g-0">
+                <div class="latest-news">
+                    <div class="container mt-3 g-0">
+
+
+                        <div class="row border-bottom border-danger mb-1 pb-1 mx-1 g-0">
+                            <div class="col-12 col-md-6"><span class="badge bg-danger py-2">LATEST ARTICLES</span></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 col-md-6">
+                                <div class="card" id="latest-featured-1">
+                                    <img src="" class="card-img-top" alt="" id="latest-featured-1-img">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark" id="latest-featured-1-title">Card title</h5>
+                                        <p id="latest-featured-1-info">
+                                            <small>
+                                                <span id="latest-featured-1-author" class="fw-bold me-4"></span>
+                                                <span id="latest-featured-1-published-date" class=""></span>
+                                            </small>
+                                        </p>
+                                        <p class="card-text" id="latest-featured-1-summary"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="card" id="latest-featured-2">
+                                    <img src="" class="card-img-top" alt="" id="latest-featured-2-img">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-dark" id="latest-featured-2-title">Card title</h5>
+                                        <p id="latest-featured-2-info">
+                                            <small>
+                                                <span id="latest-featured-2-author" class="fw-bold me-4"></span>
+                                                <span id="latest-featured-2-published-date" class=""></span>
+                                            </small>
+                                        </p>
+                                        <p class="card-text" id="latest-featured-2-summary"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function loadLatestArticles() {
+                        setImgSrc('#latest-featured-1-img', newsData[4].media);
+                        setElement('#latest-featured-1-title', newsData[4].title);
+                        setElement('#latest-featured-1-author', newsData[4].rights);
+                        setElement('#latest-featured-1-summary', `${newsData[4].summary.substring(0, 150)}...`);
+
+                        setImgSrc('#latest-featured-2-img', newsData[5].media);
+                        setElement('#latest-featured-2-title', newsData[5].title);
+                        setElement('#latest-featured-2-author', newsData[5].rights);
+                        setElement('#latest-featured-2-summary', `${newsData[5].summary.substring(0, 150)}...`);
+                    }
+                </script>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 mt-3">
+
+
+                <div class="row border-bottom border-dark mb-1 pb-1 mx-1 g-0">
+                    <div class="col-12 col-md-6"><span class="badge bg-dark py-2">OUR PICK</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="container py-5">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div><img
+                        src="https://images.marketpath.com/49a8453e-67cb-48fd-a268-1789963f8444/image/0719607a-83f8-4597-bd52-c7641d48976a/planet-energy-logo.png"
+                        alt="planet-energy-logo" title="planet-energy-logo" height="90" width="272" /></div>
+                <div class="row pt-3">
+                    <div class="col-12">
+                        <h6 class="pb-2">About Us</h6>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis
+                            consequuntur ex voluptates perspiciatis omnis unde minima expedita.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-9 ps-md-5">
+                <div class="row">
+
+                    <div class="col-12 col-md-6">
+
+
+
+
+
+                        <div class="extended-navigation">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md py-4">
+                        <span class="mx-2">Planet and Energy 2022</span>
+                        <span class="mx-2">All Rights Reserved</span>
+                        <span class="mx-2">Website Powered by <a href="https://www.marketpath.com/" target="_blank"
+                                title="Marketpath CMS">Marketpath CMS</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/_weather.js"></script>
+
+    <!-- Logo image credits -->
+    <!--<a href='https://www.freepik.com/vectors/business'>Business vector created by macrovector - www.freepik.com</a>-->
 </body>
 
 </html>
