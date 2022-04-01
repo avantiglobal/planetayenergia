@@ -1,4 +1,4 @@
-import { setBackground, setImgSrc, setElement } from './_utilities';
+import { setBackground, setImgSrc, setElement } from './_utilities.js';
 
 export const fetchNews = () => {
     var newsData = "";

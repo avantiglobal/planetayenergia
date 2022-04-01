@@ -1,7 +1,6 @@
-
-import getCurWeather from "./modules/_weather";
-import { getCurDate } from "./modules/_utilities";
-import { fetchNews } from "./modules/_news";
+import getCurWeather from "./modules/_weather.js";
+import { getCurDate } from "./modules/_utilities.js";
+import { fetchNews } from "./modules/_news.js";
 
 window.onload = () => {
     // Loading the Current Date
