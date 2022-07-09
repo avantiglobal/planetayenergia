@@ -17,6 +17,7 @@ export const fetchNews = () => {
         .then(data => {
             //debugger;
             newsData = data.articles;
+            console.log('News Data', newsData);
             loadFeaturedNews(newsData);
             loadLatestArticles(newsData);
         });
